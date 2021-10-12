@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+current_script_path=${BASH_SOURCE[0]}
+plugin_dir=$(dirname "$(dirname "$current_script_path")")
+
+# shellcheck source=lib/main.bash
+. "${plugin_dir}/lib/main.bash"
+
+logdebug "Entered script '$0'."
+
+# ------------------------------------------------------------------------------
+
+download_release() {
+    local version="$1"
+    local filename="$2"
+
+    local platform
+    platform=$(uname | awk '{print tolower($0)}')
+
+    local arch
+    uname_arch=$(uname -m)
+    if [ "x86_64" = "$uname_arch" ]; then
+        arch="amd64"
+    elif [ "arm64" = "$uname_arch" ]; then
+        arch="arm64"
+    else
+        arch="386"
+    fi
+
+    local url="$gh_repo/releases/download/v$version/$tool_name-$version-$platform-$arch.tar.gz"
+
+    logdebug "version=$version"
+    logdebug "filename=$filename"
+    logdebug "platform=$platform"
+    logdebug "arch=$arch"
+    logdebug "url=$url"
+
+    curl "${curl_opts[@]}" -o "$filename" "$url" || logexit "Could not download $tool_name release $version from '$url'."
+    logsuccess "Downloaded binary from '$url'."
+}
+
+# ------------------------------------------------------------------------------
+
+install_version="$ASDF_INSTALL_VERSION" && logdebug "install_version=$install_version"
+download_path="$ASDF_DOWNLOAD_PATH" && logdebug "download_path=$download_path"
+
+mkdir -p "$download_path"
+
+release_file="$download_path/$tool_name-$install_version.tar.gz"
+
+download_release "$install_version" "$release_file"
+
+tar -xzf "$release_file" -C "$download_path" || logexit "Could not extract '$release_file'."
+logsuccess "Unpacked archive '$release_file' at '$download_path'."
+
+if ! [ -f "$download_path/$tool_name" ]; then
+    logexit "File '$download_path/$tool_name' expected, but does not exist."
+fi
+
+rm "$release_file"

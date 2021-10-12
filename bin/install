@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+current_script_path=${BASH_SOURCE[0]}
+plugin_dir=$(dirname "$(dirname "$current_script_path")")
+
+# shellcheck source=lib/main.bash
+. "${plugin_dir}/lib/main.bash"
+
+# ------------------------------------------------------------------------------
+
+install_type="$ASDF_INSTALL_TYPE" && logdebug "install_type=$install_type"
+install_version="$ASDF_INSTALL_VERSION" && logdebug "install_version=$install_version"
+install_path="$ASDF_INSTALL_PATH" && logdebug "install_path=$install_path"
+download_path="$ASDF_DOWNLOAD_PATH" && logdebug "download_path=$download_path"
+
+if [ "$install_type" != "version" ]; then
+    logexit "asdf-$tool_name supports release installs only."
+fi
+
+(
+    mkdir -p "$install_path"
+    mkdir -p "$install_path/bin"
+
+    cp -r "$download_path"/* "$install_path"
+    logsuccess "Copied downloaded files from '$download_path' to '$install_path'."
+
+    mv "$install_path/$tool_name" "$install_path/bin/"
+    logsuccess "Moved $tool_name binary to '$install_path/bin/'."
+
+    test -x "$install_path/bin/$tool_name" \
+        || logexit "'$install_path/bin/$tool_name' not executable."
+
+    if ! "$install_path/bin/$tool_name" --help > /dev/null; then
+        logexit "Executing '$install_path/bin/$tool_name --help' failed."
+    fi
+
+    logsuccess "$tool_name '$install_version' installed."
+) || (
+    rm -rf "$install_path"
+    logexit "An error ocurred while installing $tool_name to '$install_path'."
+)
