@@ -1,8 +1,5 @@
 # asdf-gopass
 
-![maintenance-status](https://img.shields.io/badge/maintenance_status-actively_maintained-brightgreen)
-![development-status](https://img.shields.io/badge/development_status-maintenance_fixes_only-brightgreen)
-
 [Gopass](https://github.com/gopasspw/gopass) plugin for the [asdf version manager](https://asdf-vm.com).
 
 This plugin installs Gopass. The password manager for the command line. This
