@@ -1,3 +1,5 @@
+[![primary](https://github.com/trallnag/asdf-gopass/actions/workflows/primary.yaml/badge.svg)](https://github.com/trallnag/asdf-gopass/actions/workflows/primary.yaml)
+
 # asdf-gopass
 
 [Gopass](https://github.com/gopasspw/gopass) plugin for the [asdf version manager](https://asdf-vm.com).
