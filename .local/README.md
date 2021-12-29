@@ -5,6 +5,6 @@ no better place to stay at.
 
 ## Content
 
-| Element        | Description                                           |
-| -------------- | ----------------------------------------------------- |
-| [`node`](node) | Node NPM environment definition for Semantic Release. |
+| Element        | Description                                |
+| -------------- | ------------------------------------------ |
+| [`node`](node) | Node NPM environment for Semantic Release. |
