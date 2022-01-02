@@ -6,4 +6,4 @@ automatically triggered by pre-commit locally and within the CI/CD pipeline.
 * <https://asdf-vm.com/>
 * <https://github.com/asdf-vm/asdf>
 
-Configured via `.tool-versions`.
+Configured via [`../../.tool-versions`](../../.tool-versions).
