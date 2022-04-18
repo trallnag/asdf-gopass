@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cat << EOF
+coreutils
+curl
+git
+gpg
+rng-tools
+sed
+tar
+EOF

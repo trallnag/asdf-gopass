@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cat << EOF
+Central plugin repo for asdf: https://github.com/asdf-vm/asdf-plugins
+Code repository of this plugin: https://github.com/trallnag/asdf-gopass
+Gopass homepage: https://www.gopass.pw/
+Gopass on GitHub: https://github.com/gopasspw/gopass
+EOF
