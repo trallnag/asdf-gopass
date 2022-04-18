@@ -3,8 +3,8 @@
 Used for automatically releasing new versions. Only relevant within CI/CD, so no
 local setup required.
 
-- https://github.com/semantic-release/semantic-release
-- https://semantic-release.gitbook.io/semantic-release/
+- <https://github.com/semantic-release/semantic-release>
+- <https://semantic-release.gitbook.io/semantic-release/>
 
 Configuration of semantic-release takes place in multiple places:
 

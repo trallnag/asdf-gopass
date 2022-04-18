@@ -12,8 +12,8 @@ installs required OS dependencies.
 
 Gopass needs some external programs to work:
 
-* `gpg` - [GnuPG](https://www.gnupg.org/), preferably in Version 2 or later.
-* `git` - [Git SCM](https://git-scm.com/), any Version should be OK.
+- `gpg` - [GnuPG](https://www.gnupg.org/), preferably in Version 2 or later.
+- `git` - [Git SCM](https://git-scm.com/), any Version should be OK.
 
 It is recommended to have either `rng-tools` or `haveged` installed to speed up
 key generation if these are available for your platform.
