@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/trallnag/asdf-gopass/compare/1.1.0...1.1.1) (2022-07-03)
+
+
+### Refactor
+
+* Rehaul CI and dev setup ([c0839bd](https://github.com/trallnag/asdf-gopass/commit/c0839bd9c9bcd7c54eecb851c2ae9e3c6fd13113))
+* Switch to ISC license ([2430891](https://github.com/trallnag/asdf-gopass/commit/2430891a127e41e0e027125579b85bc5d9dde7aa))
+
 ## [1.1.0](https://github.com/trallnag/asdf-gopass/compare/1.0.0...1.1.0) (2022-04-18)
 
 
