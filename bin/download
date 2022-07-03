@@ -13,32 +13,32 @@ logdebug "Entered script '$0'."
 # ------------------------------------------------------------------------------
 
 download_release() {
-    local version="$1"
-    local filename="$2"
+  local version="$1"
+  local filename="$2"
 
-    local platform
-    platform=$(uname | awk '{print tolower($0)}')
+  local platform
+  platform=$(uname | awk '{print tolower($0)}')
 
-    local arch
-    uname_arch=$(uname -m)
-    if [ "x86_64" = "$uname_arch" ]; then
-        arch="amd64"
-    elif [ "arm64" = "$uname_arch" ]; then
-        arch="arm64"
-    else
-        arch="386"
-    fi
+  local arch
+  uname_arch=$(uname -m)
+  if [ "x86_64" = "$uname_arch" ]; then
+    arch="amd64"
+  elif [ "arm64" = "$uname_arch" ]; then
+    arch="arm64"
+  else
+    arch="386"
+  fi
 
-    local url="$gh_repo/releases/download/v$version/$tool_name-$version-$platform-$arch.tar.gz"
+  local url="$gh_repo/releases/download/v$version/$tool_name-$version-$platform-$arch.tar.gz"
 
-    logdebug "version=$version"
-    logdebug "filename=$filename"
-    logdebug "platform=$platform"
-    logdebug "arch=$arch"
-    logdebug "url=$url"
+  logdebug "version=$version"
+  logdebug "filename=$filename"
+  logdebug "platform=$platform"
+  logdebug "arch=$arch"
+  logdebug "url=$url"
 
-    curl "${curl_opts[@]}" -o "$filename" "$url" || logexit "Could not download $tool_name release $version from '$url'."
-    logsuccess "Downloaded binary from '$url'."
+  curl "${curl_opts[@]}" -o "$filename" "$url" || logexit "Could not download $tool_name release $version from '$url'."
+  logsuccess "Downloaded binary from '$url'."
 }
 
 # ------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ tar -xzf "$release_file" -C "$download_path" || logexit "Could not extract '$rel
 logsuccess "Unpacked archive '$release_file' at '$download_path'."
 
 if ! [ -f "$download_path/$tool_name" ]; then
-    logexit "File '$download_path/$tool_name' expected, but does not exist."
+  logexit "File '$download_path/$tool_name' expected, but does not exist."
 fi
 
 rm "$release_file"

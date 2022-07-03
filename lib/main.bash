@@ -16,5 +16,5 @@ gh_repo="https://github.com/gopasspw/gopass" && logdebug "gh_repo=$gh_repo"
 curl_opts=(-fsSL)
 
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
-    curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
+  curl_opts=("${curl_opts[@]}" -H "Authorization: token $GITHUB_API_TOKEN")
 fi
