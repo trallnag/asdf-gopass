@@ -2,7 +2,8 @@
 
 # asdf-gopass
 
-[Gopass](https://github.com/gopasspw/gopass) plugin for the [asdf version manager](https://asdf-vm.com).
+[Gopass](https://github.com/gopasspw/gopass) plugin for the
+[asdf version manager](https://asdf-vm.com).
 
 This plugin installs Gopass. The password manager for the command line. This
 plugin simply installs the binary. It does not setup shell auto completion nor
@@ -18,7 +19,8 @@ Gopass needs some external programs to work:
 It is recommended to have either `rng-tools` or `haveged` installed to speed up
 key generation if these are available for your platform.
 
-For more information see [here](https://github.com/gopasspw/gopass/blob/master/docs/setup.md#pre-installation-steps).
+For more information see
+[here](https://github.com/gopasspw/gopass/blob/master/docs/setup.md#pre-installation-steps).
 
 ## Install
 
