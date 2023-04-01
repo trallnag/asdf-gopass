@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/checkout@v3
 
-      - uses: asdf-vm/actions/install@v1
+      - uses: asdf-vm/actions/install@v2
 
       # ------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ jobs:
       # ------------------------------------------------------------------------
 
       - name: Asdf plugin test
-        uses: asdf-vm/actions/plugin-test@v1
+        uses: asdf-vm/actions/plugin-test@v2
         with:
           command: gopass --help
         env:
