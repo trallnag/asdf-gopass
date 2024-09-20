@@ -23,7 +23,7 @@ download_release() {
   uname_arch=$(uname -m)
   if [ "x86_64" = "$uname_arch" ]; then
     arch="amd64"
-  elif [ "arm64" = "$uname_arch" ]; then
+  elif [ "arm64" = "$uname_arch" ] || [ "aarch64" = "$uname_arch" ]; then
     arch="arm64"
   else
     arch="386"
